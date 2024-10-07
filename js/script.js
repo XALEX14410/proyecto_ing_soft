@@ -20,7 +20,7 @@ function initMap() {
 
 // Función para cargar las rutas desde PHP
 async function fetchRoutes() {
-    const response = await fetch('./database/routes.php');  // Llamada a PHP que devuelve rutas
+    const response = await fetch('./model/routes.php');  // Llamada a PHP que devuelve rutas
     const data = await response.json();  // Convertir la respuesta en formato JSON
     return data;
 }
