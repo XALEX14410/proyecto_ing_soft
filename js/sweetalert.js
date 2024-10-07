@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (result.includes('Nombre de usuario o contraseña incorrectos')) {
                         Swal.fire('Error', 'Nombre de usuario o contraseña incorrectos.', 'error');
                     } else {
-                        window.location.href = 'admin.php';
+                        window.location.href = './view/admin.php';
                     }
                 })
                 .catch(error => {

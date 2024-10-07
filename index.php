@@ -4,6 +4,7 @@
 <head>
     <title>Mapa con Rutas Predefinidas</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css">
 </head>
@@ -19,21 +20,21 @@
             </ul>
         </nav>
     </header>
- <!-- Aquí irá el contenido de la página o formulario de inicio de sesión -->
- <div id="loginForm" class="container" style="display:none;">
-            <h2>Iniciar Sesión</h2>
-            <form id="formLogin">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="username" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-            </form>
-        </div>
+    <!-- Aquí irá el contenido de la página o formulario de inicio de sesión -->
+    <div id="loginForm" class="container" style="display:none;">
+        <h2>Iniciar Sesión</h2>
+        <form id="formLogin">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </form>
+    </div>
     <main>
         <section>
             <div class="section1">
@@ -41,7 +42,7 @@
                     <select class="selections" id="routeSelect" onchange="handleRouteChange()">
                         <option value="0">Selecciona una ruta</option>
                         <!-- Insertar opciones de rutas dinámicamente usando PHP -->
-                        <?php include 'get_route_options.php'; ?>
+                        <?php include './controller/get_route_options.php'; ?>
                     </select>
                 </div>
             </div>
