@@ -20,10 +20,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 
 
-include_once(dirname(__FILE__)."/../model/bd_rutas.php");
-// include_once realpath(dirname(__FILE__)."/../model/componentes.php");
+include_once(dirname(__FILE__) . "/../model/bd_rutas.php");
+include_once(dirname(__FILE__) . "/../model/listas.php");
+include_once realpath(dirname(__FILE__) . "/../model/componentes.php");
 $midato    = new bd_ruta();
-// $micomponente = new componentes();
+$lista = new listas();
+$micomponente = new componentes();
 
 $lista_ruta = $midato->lista_ruta();
 ?>
@@ -34,51 +36,138 @@ $lista_ruta = $midato->lista_ruta();
 <head>
     <title>Panel de Administración</title>
     <link rel="stylesheet" href="./../css/style.css">
+    <link rel="stylesheet" href="./../css/tables_desing.css">
+    <link rel="stylesheet" href="./../css/dataTables.dataTables.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <img src="logo.png" alt="Logo de la Empresa" class="logo">
-            <ul>
-                <li><a href="admin.php"> <i class="bi bi-house-door"></i> Inicio</a></li>
-                <li><a href="#addRoute" data-bs-toggle="modal" data-bs-target="#addRouteModal"> <i class="bi bi-plus-circle"></i> Agregar Ruta</a></li>
-                <!-- Más opciones de administración aquí -->
-            </ul>
-        </nav>
-    </header>
-
+    <?php $micomponente->generaMenu() ?>
     <main>
         <h1>Administrador</h1>
+
+        <h2>Usuarios</h2>
         <table id="datos" class="tabla">
             <thead>
-                <tr class="tabla__fila1">
+                <tr>
+                    <td>id</td>
+                    <td>usuarios</td>
+                    <td>contraseña</td>
+                    <td>ubicacion</td>
+                    <td>nombre apellido</td>
+                    <td>edad</td>
+                    <td>telefono</td>
+                    <!-- <td>correo</td> -->
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <?php $lista->usuarios_disponibles(); ?>
+        </table>
+
+
+
+        <h2>Camiones</h2>
+        <table id="datos" class="tabla">
+            <thead>
+                <tr>
+                    <td>id_camion</td>
+                    <td>numero</td>
+                    <td>id_conductor</td>
+                    <td>agencia</td>
+                    <td>estado</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <?php $lista->camiones_list(); ?>
+        </table>
+
+
+        <h2>Rutas</h2>
+        <table class="tabla">
+            <thead>
+                <tr>
                     <td>id</td>
                     <td>nombre</td>
                     <td>coordinates</td>
+                    <td>Acciones</td>
                 </tr>
             </thead>
-            <tbody>
-                <?php for ($i=0; $i<count($lista_ruta); $i++) { ?>
-                    <tr>
-                        
-                            <td><?php echo $lista_ruta[$i]->getid(); ?></td>
-                            <td><?php echo $lista_ruta[$i]->getnombre(); ?></td>
-                            <td><?php echo $lista_ruta[$i]->getcoordinates(); ?></td>
-                        
-
-                        
-                    </tr>
-                <?php } ?>
-            </tbody>
+            <?php $lista->getRoutetable(); ?>
         </table>
+
+        <h2>Horario</h2>
+        <table id="tabla1" class="tabla">
+            <thead>
+                <tr>
+                    <td>id_horario</td>
+                    <td>id_route</td>
+                    <td>hora</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <?php $lista->horario_list(); ?>
+        </table>
+
+
+
+
+
+        <!-- Contenedor con ambas tablas alineadas horizontalmente -->
+        <div class="contenedor-tablas">
+
+            <!-- Contenedor para la primera tabla y su título -->
+            <div class="contenedor-tabla-individual">
+                <h2>Lugares</h2>
+                <!-- `id_lugar`, `nombre`, `favoritos`, `coordenadas`, `tipo` -->
+                <table id="tabla1" class="tabla">
+                    <thdead>
+                        <tr>
+                            <td>id</td>
+                            <td>Nombre</td>
+                            <td>favorito</td>
+                            <td>coordenadas</td>
+                            <td>tipo</td>
+                            <td>Acciones</td>
+                        </tr>
+                        </thead>
+                        <?php $lista->lugares_disponibles(); ?>
+                </table>
+            </div>
+
+            <!-- Contenedor para la segunda tabla y su título -->
+            <div class="contenedor-tabla-individual">
+                <h2>Soporte</h2>
+                <table id="tabla2" class="tabla">
+                    <thead>
+                        <tr>
+                            <td>id</td>
+                            <td>Tipo de problema</td>
+                            <td>problema</td>
+                            <td>usuario</td>
+                            <td>Acciones</td>
+                        </tr>
+                    </thead>
+                    <?php $lista->soporte_list(); ?>
+                </table>
+            </div>
+
+        </div>
+
+
+
 
     </main>
 
+    <?php $micomponente->footer();?>
+    <script src="./../js/NdataTables.js"></script>
+    <!-- JQuery -->
+    <script src="./../tbl-components/jquery-3.7.1.js"></script>
+    <!-- Script que me permite agregar las clase de CSS a las etiquetas de los DataTables -->
+    <script src="./../tbl-components/dataTables.min.js"></script>
+    <!-- Script que invoca y genera el dataTable -->
     <!-- Archivo de scripts -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="./../js/admin.js"></script>
+
 </body>
 
 </html>
