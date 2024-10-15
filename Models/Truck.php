@@ -52,3 +52,4 @@ class Truck
         $this->state = $state;
     }
 }
+?>

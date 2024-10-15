@@ -30,3 +30,4 @@ class Schedule {
         $this->ruta = $ruta;
     }
 }
+?>

@@ -44,3 +44,4 @@ class Place {
         $this->type = $type;
     }
 }
+?>

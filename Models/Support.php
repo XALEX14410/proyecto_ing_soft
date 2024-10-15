@@ -43,3 +43,4 @@ class Support
         $this->user = $user;
     }
 }
+?>
