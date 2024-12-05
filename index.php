@@ -4,7 +4,8 @@
 <head>
     <title>Mapa con Rutas Predefinidas</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css">
 </head>
@@ -36,6 +37,9 @@
         </form>
     </div>
     <main>
+
+
+    
         <section>
             <div class="section1">
                 <div class="controles" id="controls">

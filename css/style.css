@@ -20,53 +20,6 @@ body {
   flex-direction: column;
 }
 
-header {
-  background-color: var(--color-principal);
-  color: var(--color-acento);
-  text-align: center;
-  padding: var(--espaciado);
-  position: relative; /* Asegura que el contenido se posicione correctamente en relación con el header */
-}
-
-header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: var(--espaciado);
-  background-color: var(--color-principal);
-}
-
-header .logo {
-  width: 100px;
-}
-
-header ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 15px;
-}
-
-header ul li {
-  display: inline;
-}
-
-header ul li a {
-  color: var(--color-acento);
-  text-decoration: none;
-  transition: color 0.3s ease; /* Efecto de transición suave */
-}
-
-header ul li a:hover {
-  color: var(--color-nav-hover);
-  text-decoration: underline;
-}
-
-header ul li a.active {
-  color: var(--color-nav-active);
-}
-
 main {
   flex: 1;
 }
@@ -85,6 +38,8 @@ main {
 .selections {
   max-width: 700px;
   margin: 0 auto;
+  display: flex; /* Asegura que los elementos dentro de selections se acomoden bien */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en dispositivos más pequeños */
 }
 
 select {
@@ -96,7 +51,7 @@ select {
 
 .section1, .section2 {
   width: 100%;
-  height: auto; /* Ajusta la altura según el contenido */
+  height: auto;
   background-color: #f9f9f9;
   margin: var(--espaciado) 0;
 }
@@ -104,21 +59,14 @@ select {
 section {
   position: relative;
   width: 100%;
-  height: auto; /* Ajusta la altura según el contenido */
+  height: auto;
   display: flex;
   justify-content: center;
 }
 
-footer {
-  background-color: var(--color-principal);
-  color: var(--color-acento);
-  text-align: center;
-  padding: var(--espaciado);
-}
-
 @media (max-width: 1024px) {
   .mapa {
-    height: 40vh; /* Ajusta la altura del mapa para pantallas más pequeñas */
+    height: 60vh; /* Ajusta la altura del mapa para pantallas más pequeñas */
   }
 
   .controles {
@@ -126,29 +74,58 @@ footer {
   }
 
   .section1, .section2 {
-    height: auto; /* Permite que la altura se ajuste según el contenido */
+    height: auto;
+  }
+
+  .selections {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .selections select {
+    width: 100%; /* Hace que los selectores ocupen el 100% en pantallas pequeñas */
+  }
+
+  section {
+    display: block; /* Cambia el display a block para pantallas más pequeñas */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
   }
 }
 
 @media (max-width: 768px) {
   section {
     display: block; /* Cambia a bloque para pantallas pequeñas */
+    padding: var(--espaciado); /* Agrega espaciado en pantallas pequeñas */
   }
 
   .selections {
     width: 90%;
   }
 
-  header ul {
-    flex-direction: column;
-    gap: 10px;
+  .mapa {
+    height: 35vh; /* Reduce la altura del mapa en pantallas muy pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .mapa {
+    height: 30vh; /* Ajusta aún más la altura del mapa */
   }
 
-  header ul li {
-    margin-bottom: 10px;
+  select {
+    font-size: 14px; /* Ajusta el tamaño de la fuente en los selectores */
   }
 
-  header .logo {
-    width: 80px; /* Reduce el tamaño del logo en pantallas pequeñas */
+  .selections select {
+    padding: 12px; /* Aumenta el padding para mayor comodidad en pantallas pequeñas */
+  }
+
+  footer {
+    font-size: 14px; /* Ajusta el tamaño de la fuente en el footer */
+    padding: 15px;
+  }
+
+  section {
+    padding: 10px; /* Ajusta el padding en pantallas pequeñas */
   }
 }

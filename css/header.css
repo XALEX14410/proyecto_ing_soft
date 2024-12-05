@@ -1,0 +1,73 @@
+header {
+    background-color: var(--color-principal);
+    color: var(--color-acento);
+    text-align: center;
+    padding: var(--espaciado);
+    position: relative; /* Asegura que el contenido se posicione correctamente en relación con el header */
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--espaciado);
+    background-color: var(--color-principal);
+}
+
+header .logo {
+    width: 100px;
+    transition: width 0.3s ease; /* Suaviza el cambio de tamaño del logo */
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+header ul li {
+    display: inline;
+}
+
+header ul li a {
+    color: var(--color-acento);
+    text-decoration: none;
+    transition: color 0.3s ease; /* Efecto de transición suave */
+}
+
+header ul li a:hover {
+    color: var(--color-nav-hover);
+    text-decoration: underline;
+}
+
+header ul li a.active {
+    color: var(--color-nav-active);
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: var(--espaciado-movil); /* Ajusta el espaciado en pantallas pequeñas */
+    }
+
+    header nav {
+        flex-direction: column; /* Los elementos se apilan verticalmente en pantallas pequeñas */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+        gap: 15px; /* Espaciado entre los elementos */
+    }
+
+    header ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: left; /* Alinea los elementos del menú a la izquierda */
+    }
+
+    header ul li {
+        margin-bottom: 10px;
+    }
+
+    header .logo {
+        width: 80px; /* Reduce el tamaño del logo en pantallas pequeñas */
+    }
+}

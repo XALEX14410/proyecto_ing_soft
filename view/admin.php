@@ -18,8 +18,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     }
 }
 
-
-
 include_once(dirname(__FILE__) . "/../model/bd_rutas.php");
 include_once(dirname(__FILE__) . "/../model/listas.php");
 include_once realpath(dirname(__FILE__) . "/../model/componentes.php");
@@ -36,138 +34,67 @@ $lista_ruta = $midato->lista_ruta();
 <head>
     <title>Panel de Administración</title>
     <link rel="stylesheet" href="./../css/style.css">
-    <link rel="stylesheet" href="./../css/tables_desing.css">
-    <link rel="stylesheet" href="./../css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <!-- Estilos para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+
+
 </head>
 
-<body>
+<body data-aos="fade-in">
     <?php $micomponente->generaMenu() ?>
     <main>
-        <h1>Administrador</h1>
+        <div class="container">
+            <div class="admin-container">
+                <!-- Sección de usuarios -->
+                <div class="admin-item" data-aos="flip-left">
+                    <i class="fas fa-users"></i>
+                    <h4>Ver Usuarios</h4>
+                    <a href="ver_usuarios.php" class="btn btn-primary">Ver Usuarios</a>
+                </div>
 
-        <h2>Usuarios</h2>
-        <table id="datos" class="tabla">
-            <thead>
-                <tr>
-                    <td>id</td>
-                    <td>usuarios</td>
-                    <td>contraseña</td>
-                    <td>ubicacion</td>
-                    <td>nombre apellido</td>
-                    <td>edad</td>
-                    <td>telefono</td>
-                    <!-- <td>correo</td> -->
-                    <td>Acciones</td>
-                </tr>
-            </thead>
-            <?php $lista->usuarios_disponibles(); ?>
-        </table>
+                <!-- Sección de camiones -->
+                <div class="admin-item" data-aos="flip-left">
+                    <i class="fas fa-bus"></i>
+                    <h4>Camiones</h4>
+                    <a href="camiones.php" class="btn btn-primary">Ver Camiones</a>
+                </div>
 
+                <!-- Sección de rutas -->
+                <div class="admin-item" data-aos="flip-left">
+                    <i class="fas fa-route"></i>
+                    <h4>Rutas</h4>
+                    <a href="rutas.php" class="btn btn-primary">Ver Rutas</a>
+                </div>
 
+                <!-- Sección de soporte -->
+                <div class="admin-item" data-aos="flip-left">
+                    <i class="fas fa-headset"></i>
+                    <h4>Soporte</h4>
+                    <a href="soporte.php" class="btn btn-primary">Ver Soporte</a>
+                </div>
 
-        <h2>Camiones</h2>
-        <table id="datos" class="tabla">
-            <thead>
-                <tr>
-                    <td>id_camion</td>
-                    <td>numero</td>
-                    <td>id_conductor</td>
-                    <td>agencia</td>
-                    <td>estado</td>
-                    <td>Acciones</td>
-                </tr>
-            </thead>
-            <?php $lista->camiones_list(); ?>
-        </table>
-
-
-        <h2>Rutas</h2>
-        <table class="tabla">
-            <thead>
-                <tr>
-                    <td>id</td>
-                    <td>nombre</td>
-                    <td>coordinates</td>
-                    <td>Acciones</td>
-                </tr>
-            </thead>
-            <?php $lista->getRoutetable(); ?>
-        </table>
-
-        <h2>Horario</h2>
-        <table id="tabla1" class="tabla">
-            <thead>
-                <tr>
-                    <td>id_horario</td>
-                    <td>id_route</td>
-                    <td>hora</td>
-                    <td>Acciones</td>
-                </tr>
-            </thead>
-            <?php $lista->horario_list(); ?>
-        </table>
-
-
-
-
-
-        <!-- Contenedor con ambas tablas alineadas horizontalmente -->
-        <div class="contenedor-tablas">
-
-            <!-- Contenedor para la primera tabla y su título -->
-            <div class="contenedor-tabla-individual">
-                <h2>Lugares</h2>
-                <!-- `id_lugar`, `nombre`, `favoritos`, `coordenadas`, `tipo` -->
-                <table id="tabla1" class="tabla">
-                    <thdead>
-                        <tr>
-                            <td>id</td>
-                            <td>Nombre</td>
-                            <td>favorito</td>
-                            <td>coordenadas</td>
-                            <td>tipo</td>
-                            <td>Acciones</td>
-                        </tr>
-                        </thead>
-                        <?php $lista->lugares_disponibles(); ?>
-                </table>
+                <!-- Sección de horarios -->
+                <div class="admin-item" data-aos="flip-left">
+                    <i class="fas fa-clock"></i>
+                    <h4>Horarios</h4>
+                    <a href="horarios.php" class="btn btn-primary">Ver Horarios</a>
+                </div>
             </div>
-
-            <!-- Contenedor para la segunda tabla y su título -->
-            <div class="contenedor-tabla-individual">
-                <h2>Soporte</h2>
-                <table id="tabla2" class="tabla">
-                    <thead>
-                        <tr>
-                            <td>id</td>
-                            <td>Tipo de problema</td>
-                            <td>problema</td>
-                            <td>usuario</td>
-                            <td>Acciones</td>
-                        </tr>
-                    </thead>
-                    <?php $lista->soporte_list(); ?>
-                </table>
-            </div>
-
         </div>
-
-
-
-
     </main>
 
-    <?php $micomponente->footer();?>
-    <script src="./../js/NdataTables.js"></script>
-    <!-- JQuery -->
-    <script src="./../tbl-components/jquery-3.7.1.js"></script>
-    <!-- Script que me permite agregar las clase de CSS a las etiquetas de los DataTables -->
-    <script src="./../tbl-components/dataTables.min.js"></script>
-    <!-- Script que invoca y genera el dataTable -->
-    <!-- Archivo de scripts -->
+    <?php $micomponente->footer(); ?>
+
+    <!-- Archivos de scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
+    <script>
+        // Inicializar AOS (animaciones)
+        AOS.init();
+    </script>
 </body>
 
 </html>
