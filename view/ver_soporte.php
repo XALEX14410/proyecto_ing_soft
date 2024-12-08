@@ -33,68 +33,73 @@ $lista_ruta = $midato->lista_ruta();
 
 <head>
     <title>Panel de Administración</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <!-- Estilos para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="./../css/footer.css">
     <link rel="stylesheet" href="./../css/admin.css">
     <link rel="stylesheet" href="./../css/header.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/tables_desing.css">
 
 </head>
 
 <body data-aos="fade-in">
     <?php $micomponente->generaMenu() ?>
-    <main>
-        <div class="container">
-            <div class="admin-container">
-                <!-- Sección de usuarios -->
-                <div class="admin-item" data-aos="flip-left">
-                    <i class="fas fa-users"></i>
-                    <h4>Ver Usuarios</h4>
-                    <a href="ver_usuarios.php" class="btn btn-primary">Ver Usuarios</a>
-                </div>
+    <a href="#" id="insertarBtn"><i class="bi bi-plus-square-fill"></i>Insertar Soporte</a>
 
-                <!-- Sección de camiones -->
-                <div class="admin-item" data-aos="flip-left">
-                    <i class="fas fa-bus"></i>
-                    <h4>Camiones</h4>
-                    <a href="ver_camiones.php" class="btn btn-primary">Ver Camiones</a>
-                </div>
+    <main class="main width--40" id="formContainer" style="display: none;">
+        <h2>Insertar Soporte</h2>
+        <form action="./../controller/insert/insertar_usuario.php" method="POST">
+            <label for="usuario">Usuario:</label>
+            <input type="text" name="usuario" id="usuario" required>
 
-                <!-- Sección de rutas -->
-                <div class="admin-item" data-aos="flip-left">
-                    <i class="fas fa-route"></i>
-                    <h4>Rutas</h4>
-                    <a href="ver_rutas.php" class="btn btn-primary">Ver Rutas</a>
-                </div>
+            <label for="ubicacion">Ubicación:</label>
+            <input type="text" name="ubicacion" id="ubicacion" required>
 
-                <!-- Sección de soporte -->
-                <div class="admin-item" data-aos="flip-left">
-                    <i class="fas fa-headset"></i>
-                    <h4>Soporte</h4>
-                    <a href="ver_soporte.php" class="btn btn-primary">Ver Soporte</a>
-                </div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required>
 
-                <!-- Sección de horarios -->
-                <div class="admin-item" data-aos="flip-left">
-                    <i class="fas fa-clock"></i>
-                    <h4>Horarios</h4>
-                    <a href="ver_horarios.php" class="btn btn-primary">Ver Horarios</a>
-                </div>
-            </div>
-        </div>
+            <label for="telefono">Telefono:</label>
+            <input type="text" name="telefono" id="telefono" required>
+
+            <label for="tipo">Tipo:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="admin">Admin</option>
+                <option value="conductor">Conductor</option>
+                <option value="soporte">Soporte</option>
+            </select>
+
+            <button type="submit">Insertar</button>
+        </form>
+    </main>
+    <main class="main width--90">
+        <h2>Soporte</h2>
+        <table border="1" class="tabla">
+            <thead>
+                <tr>
+
+                    <td>ID</td>
+                    <td>Tipo problema</td>
+                    <td>Problema</td>
+                    <td>Usuario</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $lista->soporte_list(); ?>
+            </tbody>
+        </table>
     </main>
 
-
     <?php $micomponente->footer()?>
+
     <!-- Archivos de scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
+    <script src="./../js/display.js"></script>
     <script>
         // Inicializar AOS (animaciones)
         AOS.init();

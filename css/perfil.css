@@ -1,0 +1,110 @@
+/* Contenedor principal del perfil */
+.profile-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Ajusta el ancho al 90% */
+    max-width: 1200px; /* Máximo ancho para pantallas grandes */
+    margin: 40px auto; /* Centrado con márgenes */
+    padding: 40px;
+    display: flex;
+    
+    justify-content: center; /* Centra los elementos en pantallas más pequeñas */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo de la cabecera con la foto del perfil */
+.profile-header {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    object-fit:cover;
+    
+    margin: 30px auto;
+    text-align: center; /* Alineación centrada para la foto del perfil */
+    width: 100%;
+    flex-basis: 100%; /* En pantallas pequeñas, ocupa el 100% del ancho */
+}
+
+.profile-header i {
+    font-size: 120px;
+    color: #007bff;
+}
+
+/* Foto de perfil */
+.profile-header img.profile-photo {
+    width: 250px;
+    height: 250px;
+    justify-content: center;
+    border-radius: 50%;
+    
+    margin: 0 auto;
+}
+
+/* Detalles del perfil */
+.profile-details {
+    text-align: left;
+    width: 100%;
+    flex-basis: 100%; /* En pantallas pequeñas, ocupa el 100% del ancho */
+}
+
+.profile-details h2 {
+    font-size: 48px;
+    color: #333333;
+    margin-bottom: 30px;
+}
+
+.profile-item {
+    font-size: 30px;
+    margin: 15px 0;
+    color: #555555;
+}
+
+.profile-item strong {
+    color: #007bff;
+}
+
+/* Responsividad: Cambios para pantallas pequeñas */
+@media (max-width: 768px) {
+    .profile-container {
+        width: 100%; /* 100% de ancho en pantallas pequeñas */
+        padding: 20px;
+        display: block; /* Cambiar a block para que los elementos se apilen */
+    }
+
+    .profile-header i {
+        font-size: 80px; /* Reducir el tamaño del icono en pantallas pequeñas */
+    }
+
+    .profile-details h2 {
+        font-size: 28px;
+    }
+
+    .profile-item {
+        font-size: 18px;
+    }
+
+    /* Ajustar los detalles de perfil para que estén centrados en pantallas pequeñas */
+    .profile-details {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 10px;
+    }
+
+    .profile-header i {
+        font-size: 60px; /* Hacer el icono aún más pequeño */
+    }
+
+    .profile-details h2 {
+        font-size: 24px;
+    }
+
+    .profile-item {
+        font-size: 16px;
+    }
+}

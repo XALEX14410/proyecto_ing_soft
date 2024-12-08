@@ -1,108 +1,259 @@
-/* Estilo general */
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-}
-
-main {
-    width: 80%;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
+    background-color: #f8f9fa;
     color: #333;
-    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-/* Estilo general para todas las tablas */
+.main {
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 90%;
+    /* overflow-x: auto; */
+}
+
+/* Estilos de la tabla */
 table {
     width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: left; /* Alineación izquierda para mejor legibilidad */
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; /* Para evitar que el contenido se desborde */
+    margin: 0 auto; /* Centra la tabla */
 }
 
-th, td {
-    padding: 10px;
+/* Estilos para las filas y celdas */
+tr, td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f4f4f4;
+    font-size: 14px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
 }
 
-th {
-    background-color: #4CAF50;
-    color: white;
+/* Estilos del encabezado de la tabla */
+thead tr {
+    background-color: #3498db;
+    color: #fff;
     font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+/* Estilo de las filas pares */
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
+/* Efecto hover en las filas */
+tbody tr:hover {
+    background-color: #e6f1ff;
+    cursor: pointer;
 }
 
-/* Estilos de las acciones */
-a {
-    color: #007BFF;
+/* Efecto al hacer hover sobre las celdas */
+tbody tr:hover td {
+    color: #333;
+}
+
+/* Estilo del botón */
+a#insertarBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3498db; /* Azul */
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 40px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 }
 
-a:hover {
-    text-decoration: underline;
-    color: #0056b3;
+/* Icono dentro del botón */
+a#insertarBtn i {
+    margin-right: 8px;
 }
 
-td a {
+/* Efecto cuando el ratón pasa por encima */
+a#insertarBtn:hover {
+    background-color: #2980b9; /* Azul más oscuro */
+    transform: translateY(-3px); /* Le da un pequeño salto hacia arriba */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Agrega una sombra al botón */
+}
+
+/* Efecto cuando el botón está siendo presionado */
+a#insertarBtn:active {
+    transform: translateY(0); /* Reajusta al hacer clic */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* a i{
+    margin-right: 5px;
+} */
+
+/* Botón de consultar */
+a.btn-eye {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #0094a5;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
     margin-right: 10px;
-}
-
-td a:last-child {
-    margin-right: 0;
-}
-
-/* Contenedor principal que agrupa ambas tablas */
-.contenedor-tablas {
     text-align: center;
-    display: flex;
-    justify-content: space-between; /* Alinea las tablas horizontalmente con espacio entre ellas */
+}
+/* Botón de consultar (hover) */
+a.btn-eye:hover {
+    background-color: #138b8d6e;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Contenedor individual para cada tabla */
-.contenedor-tabla-individual {
-    display: inline-block;
-    width: 45%;
-    text-align: left; /* Mantiene el texto alineado a la izquierda dentro de cada contenedor */
+
+/* Botón de editar */
+a.btn-edit {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #16a500;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    margin-right: 10px;
+    text-align: center;
 }
 
-/* Responsivo */
+/* Botón de editar (hover) */
+a.btn-edit:hover {
+    background-color: #138d3b;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de eliminar */
+a.btn-delete {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #dc3545;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    margin-left: 10px;
+    text-align: center;
+}
+
+/* Botón de eliminar (hover) */
+a.btn-delete:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos del formulario */
+form {
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    max-width: 600px; /* Ancho máximo del formulario */
+
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Dos columnas */
+    gap: 15px;
+}
+
+form label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input, form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #3498db;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    grid-column: span 2;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsividad */
 @media screen and (max-width: 768px) {
-    main {
+    .main {
         width: 95%;
     }
 
-    th, td {
-        font-size: 14px;
-        padding: 8px;
+    table {
+        display: block;
+        /* overflow-x: auto; */
+        -webkit-overflow-scrolling: touch;
     }
 
-    h1 {
-        font-size: 24px;
+    td, th {
+        font-size: 12px;
+        padding: 10px;
     }
 
-    .contenedor-tablas {
-        display: block; /* Las tablas se apilan verticalmente en pantallas pequeñas */
+    form {
+        width: 90%;
+        margin: 20px auto;
+        grid-template-columns: 1fr;
     }
 
-    .contenedor-tabla-individual {
+    form button {
         width: 100%;
-        margin-bottom: 20px;
+    }
+
+    a.btn-edit, a.btn-delete {
+        padding: 8px 12px;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    a.btn-edit, a.btn-delete {
+        width: 100%;
+        text-align: center;
     }
 }

@@ -7,7 +7,7 @@ class BaseDatos {
     /* Configuración de la base de datos */
     private $user       = "root"; // Cambia si es necesario
     private $pass       = "";     // Cambia si es necesario
-    private $base_datos = "rutas_db"; // Nombre de tu base de datos
+    private $base_datos = "iga_parcial4"; // Nombre de tu base de datos
     /* Propiedades adicionales */
     protected $campos = array();
     protected $llaveprimaria;

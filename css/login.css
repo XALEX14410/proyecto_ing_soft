@@ -1,42 +1,296 @@
-
-.login-form {
-    background-color: #ff0000;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
+/* Estilos para centrar la caja de login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    margin: 0; /* Elimina cualquier margen por defecto */
+    padding: 0; /* Elimina el padding por defecto */
 }
 
-.login-form .form-label {
-    font-weight: bold;
+/* Caja de login con sombra, bordes redondeados y colores suaves */
+.login-box {
+    width: 100%;
+    max-width: 350px; /* Define un ancho máximo para que no se estire demasiado en pantallas grandes */
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    text-align: center;
+}
+
+/* Título centrado y con margen inferior */
+.login-box h2 {
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
     color: #333;
 }
 
-.login-form .form-control {
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: none;
-    margin-bottom: 1rem;
-    padding: 10px;
-}
-
-.login-form .btn {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
+/* Estilos para los labels de los inputs */
+.form-label {
     font-weight: bold;
-    transition: background-color 0.3s;
+    color: #555;
 }
 
-.login-form .btn:hover {
+/* Estilo para los campos de texto */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+/* Efecto de enfoque en los inputs */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Botón de iniciar sesión */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto de hover en el botón */
+button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-@media (max-width: 768px) {
-    .login-form {
-        padding: 20px;
+/* Estilo de los enlaces en el pie de página */
+.footer {
+    text-align: center;
+    margin: 30px;
+}
+
+.footer a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Efecto de hover en los enlaces */
+.footer a:hover {
+    text-decoration: underline;
+}
+ /* Estilo para el contenedor de la contraseña */
+ .input-group {
+    position: relative;
+}
+
+/* Botón para ver contraseña dentro del input */
+#togglePassword {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+}
+
+#togglePassword i {
+    font-size: 1.2em;
+}
+
+/* Opcional: estilizar el input de contraseña */
+.form-control {
+    padding-right: 35px; /* Espacio para el ícono */
+}
+
+/* Estilos para el mensaje de advertencia de Caps Lock */
+#usernameMessage,
+#passwordMessage {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+    padding-left: 10px;
+}
+a/* Estilos para centrar la caja de login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    margin: 0; /* Elimina cualquier margen por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+}
+
+/* Caja de login con sombra, bordes redondeados y colores suaves */
+.login-box {
+    width: 100%;
+    max-width: 350px; /* Define un ancho máximo para que no se estire demasiado en pantallas grandes */
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    text-align: center;
+}
+
+/* Título centrado y con margen inferior */
+.login-box h2 {
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    border-bottom:2px solid black ;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Estilos para los labels de los inputs */
+.form-label {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Estilo para los campos de texto */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+/* Efecto de enfoque en los inputs */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Botón de iniciar sesión */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto de hover en el botón */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo de los enlaces en el pie de página */
+.footer {
+    text-align: center;
+    margin: 30px;
+}
+
+.footer a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Efecto de hover en los enlaces */
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para el contenedor de la contraseña */
+.input-group {
+    position: relative;
+}
+
+/* Botón para ver contraseña dentro del input */
+#togglePassword {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+}
+
+#togglePassword i {
+    font-size: 1.2em;
+}
+
+/* Opcional: estilizar el input de contraseña */
+.form-control {
+    padding-right: 35px; /* Espacio para el ícono */
+}
+
+/* Estilos para el mensaje de advertencia de Caps Lock */
+#usernameMessage,
+#passwordMessage {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+    padding-left: 10px;
+}
+/* Estilos para el logo */
+.logo {
+    max-width: 100%; /* Asegura que el logo no se estire más allá del contenedor */
+    height: auto; /* Mantiene las proporciones del logo */
+    display: block; /* Elimina el espacio debajo de la imagen */
+    margin: 0 auto; /* Centra el logo si es necesario */
+}
+
+
+
+/* Media Queries para hacer el diseño responsivo */
+@media (max-width: 600px) {
+    .login-box {
+        padding: 20px; /* Reduce el padding en pantallas pequeñas */
+        max-width: 90%; /* Hace que ocupe el 100% del ancho en pantallas más pequeñas */
+    }    .logo {
+        max-width: 80%; /* Reduce el tamaño del logo en pantallas pequeñas */
+    }
+
+    .login-box h2 {
+        font-size: 20px; /* Ajusta el tamaño del título */
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 16px; /* Aumenta el tamaño de los inputs */
+    }
+
+    button[type="submit"] {
+        font-size: 14px; /* Ajusta el tamaño del botón */
+    }
+
+    .footer {
+        margin: 15px 0; /* Reduce el margen de los enlaces en pantallas pequeñas */
     }
 }
