@@ -176,7 +176,7 @@ class listas extends BaseDatos
                 echo "<tr>";
                 echo "<td>" . $renglon['id_horario'] . "</td>";
                 echo "<td>" . $renglon['nombre_ruta'] . "</td>"; // Ahora muestra el nombre de la ruta
-                echo "<td>" . $renglon['hora'] . "</td>";
+                echo "<td>" . $renglon['hora'] ."</td>";
                 echo "<td>
                         <a href='./../controller/update/editar_horario.php?id=" . $renglon['id_horario'] . "'class='btn-edit'><i class='bi bi-pencil-fill'></i></a>  
                         <a href='./../controller/delete/eliminar_horario.php?id=" . $renglon['id_horario'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")'class='btn-delete'><i class='bi bi-trash-fill'></i></a>
