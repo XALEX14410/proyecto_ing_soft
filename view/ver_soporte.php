@@ -43,7 +43,20 @@ $lista_ruta = $midato->lista_ruta();
     <link rel="stylesheet" href="./../css/header.css">
     <link rel="stylesheet" href="./../css/footer.css">
     <link rel="stylesheet" href="./../css/tables_desing.css">
-
+    <style>
+        /* Restringir el área de texto para que solo se pueda agrandar verticalmente */
+        /* Restringir el área de texto para que solo se pueda agrandar verticalmente */
+        textarea {
+            resize: vertical;
+            /* Permitir solo el redimensionamiento vertical */
+            width: 100%;
+            /* Asegurar que ocupe todo el ancho disponible */
+            overflow: hidden;
+            /* Eliminar la barra de desplazamiento */
+            min-height: 40px;
+            /* Altura mínima para evitar que se haga demasiado pequeña */
+        }
+    </style>
 </head>
 
 <body data-aos="fade-in">
@@ -52,28 +65,25 @@ $lista_ruta = $midato->lista_ruta();
 
     <main class="main width--40" id="formContainer" style="display: none;">
         <h2>Insertar Soporte</h2>
-        <form action="./../controller/insert/insertar_usuario.php" method="POST">
-            <label for="usuario">Usuario:</label>
-            <input type="text" name="usuario" id="usuario" required>
+        <form id="formProblema">
+            <label for="tipo_problema">Tipo de problema:</label>
+            <input type="text" id="tipo_problema" name="tipo_problema" required>
 
-            <label for="ubicacion">Ubicación:</label>
-            <input type="text" name="ubicacion" id="ubicacion" required>
+            <label for="problema">Descripción del problema:</label>
+            <textarea id="problema" name="problema" required></textarea>
 
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" required>
+            <?php $lista->soporte_usuariosid() ?>
 
-            <label for="telefono">Telefono:</label>
-            <input type="text" name="telefono" id="telefono" required>
+            <!-- <label for="id_usuario">ID de usuario:</label>
+    <input type="number" id="id_usuario" name="id_usuario" required> -->
 
-            <label for="tipo">Tipo:</label>
-            <select name="tipo" id="tipo" required>
-                <option value="admin">Admin</option>
-                <option value="conductor">Conductor</option>
-                <option value="soporte">Soporte</option>
-            </select>
+            <!-- Campo oculto para 'solucionado' siempre con valor 0 -->
+            <input type="hidden" id="solucionado" name="solucionado" value="0">
 
-            <button type="submit">Insertar</button>
+            <button type="submit">Enviar</button>
         </form>
+
+
     </main>
     <main class="main width--90">
         <h2>Soporte</h2>
@@ -94,15 +104,26 @@ $lista_ruta = $midato->lista_ruta();
         </table>
     </main>
 
-    <?php $micomponente->footer()?>
+    <?php $micomponente->footer() ?>
 
     <!-- Archivos de scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="./../js/display.js"></script>
+    <script src="./../js/insert/insert_soporte.js"></script>
     <script>
         // Inicializar AOS (animaciones)
         AOS.init();
+        // Seleccionar el textarea
+        var textarea = document.getElementById("problema");
+
+        // Ajustar la altura del textarea cada vez que el usuario escriba
+        textarea.addEventListener("input", function() {
+            // Restablecer la altura para que se ajuste automáticamente
+            this.style.height = 'auto';
+            // Ajustar la altura al contenido
+            this.style.height = (this.scrollHeight) + 'px';
+        });
     </script>
 </body>
 

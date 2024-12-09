@@ -50,31 +50,19 @@ $lista_ruta = $midato->lista_ruta();
     <?php $micomponente->generaMenu() ?>
     <a href="#" id="insertarBtn"><i class="bi bi-plus-square-fill"></i>Insertar horario</a>
 
-    <main class="main width--40" id="formContainer" style="display: none;">
-        <h2>Insertar horario</h2>
-        <form action="./../controller/insert/insertar_usuario.php" method="POST">
-            <label for="usuario">Usuario:</label>
-            <input type="text" name="usuario" id="usuario" required>
+  <main class="main width--40" id="formContainer" style="display: none;">
+    <h2>Insertar Ruta</h2>
+    <form id="formHorario">
 
-            <label for="ubicacion">Ubicación:</label>
-            <input type="text" name="ubicacion" id="ubicacion" required>
+        <?php $lista->horarios_routesid()?>
+        
+        <label for="hora">Fecha y hora:</label>
+        <input type="datetime-local" name="hora" id="hora" required>
 
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" required>
+        <button type="submit">Insertar</button>
+    </form>
+</main>
 
-            <label for="telefono">Telefono:</label>
-            <input type="text" name="telefono" id="telefono" required>
-
-            <label for="tipo">Tipo:</label>
-            <select name="tipo" id="tipo" required>
-                <option value="admin">Admin</option>
-                <option value="conductor">Conductor</option>
-                <option value="soporte">Soporte</option>
-            </select>
-
-            <button type="submit">Insertar</button>
-        </form>
-    </main>
     <main class="main width--90">
         <h2>Horario</h2>
         <table border="1" class="tabla">
@@ -98,6 +86,7 @@ $lista_ruta = $midato->lista_ruta();
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="./../js/display.js"></script>
+    <script src="./../js/insert/insert_horario.js"></script>
     <script>
         // Inicializar AOS (animaciones)
         AOS.init();

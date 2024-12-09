@@ -7,7 +7,7 @@ class listas extends BaseDatos
     // Función para obtener todas las rutas en formato de opciones HTML
     public function getRoutetable()
     {
-        $sql = "SELECT * FROM routes";
+        $sql = "SELECT * FROM routes order by id";
         $con = $this->getBD();
         $resultado = $con->query($sql);
 
@@ -42,7 +42,7 @@ class listas extends BaseDatos
 
     public function usuarios_disponibles()
     {
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT * FROM usuario order by id_usuario";
         $con = $this->getBD();
         $resultado = $con->query($sql);
 
@@ -132,7 +132,7 @@ class listas extends BaseDatos
                 JOIN usuario ON soporte.id_usuario = usuario.id_usuario";
         $con = $this->getBD();
         $resultado = $con->query($sql);
-    
+
         echo "<tbody>";
         if ($resultado->num_rows > 0) {
             while ($renglon = $resultado->fetch_assoc()) {
@@ -142,7 +142,7 @@ class listas extends BaseDatos
                 echo "<td>" . $renglon['tipo_problema'] . "</td>";
                 echo "<td>" . $renglon['problema'] . "</td>";
                 echo "<td>" . $renglon['nombre_usuario'] . "</td>"; // Ahora muestra el nombre del usuario
-    
+
                 echo "<td>
                         <a href='editar.php?id=" . $renglon['id_soporte'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a>  
                         <a href='eliminar.php?id=" . $renglon['id_soporte'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i></a>
@@ -153,20 +153,22 @@ class listas extends BaseDatos
             echo "<tr><td colspan='100000000'>No se encontraron datos.</td></tr>";
         }
         echo "</tbody>";
-    
+
         $con->close();
     }
-    
+
 
     public function horario_list()
     {
-        // SQL con JOIN para obtener el nombre de la ruta
+// SQL con JOIN para obtener el nombre de la ruta y ordenar por id_horario
         $sql = "SELECT horarios.id_horario, routes.nombre AS nombre_ruta, horarios.hora 
                 FROM horarios
-                JOIN routes ON horarios.id_route = routes.id";
+                JOIN routes ON horarios.id_route = routes.id
+                ORDER BY horarios.id_horario";
+
         $con = $this->getBD();
         $resultado = $con->query($sql);
-    
+
         echo "<tbody>";
         if ($resultado->num_rows > 0) {
             while ($renglon = $resultado->fetch_assoc()) {
@@ -185,10 +187,10 @@ class listas extends BaseDatos
             echo "<tr><td colspan='100000000'>No se encontraron datos.</td></tr>";
         }
         echo "</tbody>";
-    
+
         $con->close();
     }
-    
+
 
     public function camiones_list()
     {
@@ -196,19 +198,19 @@ class listas extends BaseDatos
         $sql = "SELECT camiones.id_camion, camiones.numero, usuario.usuario AS nombre_conductor, camiones.agencia, camiones.estado 
                 FROM camiones
                 JOIN usuario ON camiones.id_conductor = usuario.id_usuario";
-        
+
         // Conexión a la base de datos
         $con = $this->getBD();
-        
+
         // Ejecutar la consulta
         $resultado = $con->query($sql);
-    
+
         // Verificar si la consulta tuvo errores
         if ($resultado === false) {
             echo "Error en la consulta: " . $con->error;
             return;  // Detenemos la ejecución si hay un error
         }
-    
+
         echo "<tbody>";
         if ($resultado->num_rows > 0) {
             while ($renglon = $resultado->fetch_assoc()) {
@@ -228,7 +230,7 @@ class listas extends BaseDatos
             echo "<tr><td colspan='6'>No se encontraron datos.</td></tr>";
         }
         echo "</tbody>";
-    
+
         $con->close();
     }
 
@@ -238,49 +240,49 @@ class listas extends BaseDatos
     {
         // Iniciar la sesión
         // session_start();
-    
+
         // Verificar si la sesión tiene el valor de 'usuario'
         if (!isset($_SESSION['usuario'])) {
             echo "No se ha iniciado sesión correctamente.";
             return;  // Detenemos la ejecución si no hay usuario en la sesión
         }
-    
+
         // Obtener el usuario logueado de la sesión
         $usuario_logueado = $_SESSION['usuario'];  // O $_SESSION['id_usuario'] si usas el ID
-    
+
         // Conexión a la base de datos
         $con = $this->getBD(); // Asumimos que esta función te devuelve una conexión válida
-    
+
         // Verificar que la conexión se haya realizado correctamente
         if ($con->connect_error) {
             echo "Error de conexión: " . $con->connect_error;
             return;  // Detenemos la ejecución si hay un error en la conexión
         }
-    
+
         // Consulta para obtener los datos del usuario logueado
         $sql = "SELECT * FROM usuario WHERE usuario = '" . $con->real_escape_string($usuario_logueado) . "'";
-    
+
         // Ejecutar la consulta
         $resultado = $con->query($sql);
-    
+
         // Verificar si la consulta tuvo errores
         if ($resultado === false) {
             echo "Error en la consulta: " . $con->error;
             return;  // Detenemos la ejecución si hay un error en la consulta
         }
-    
+
         // Verificar si hay resultados
         if ($resultado->num_rows > 0) {
             // Obtener los datos del usuario
             $usuario = $resultado->fetch_assoc();
-    
+
             // Mostrar los datos del usuario
             echo '
             <div class="profile-container">
                 <div class="profile-header">
-                    ' . ($usuario['foto'] ? 
-                        '<img src="./../img/profile/' . htmlspecialchars($usuario['foto']) . '" alt="Foto de perfil" class="profile-photo">' :
-                        '<i class="fas fa-user-circle"></i>') . '
+                    ' . ($usuario['foto'] ?
+                '<img src="./../img/profile/' . htmlspecialchars($usuario['foto']) . '" alt="Foto de perfil" class="profile-photo">' :
+                '<i class="fas fa-user-circle"></i>') . '
                 </div>
                 <div class="profile-details">
                     <h2>Perfil de Usuario</h2>
@@ -313,13 +315,13 @@ class listas extends BaseDatos
         } else {
             echo "<p>No se encontraron datos o el usuario no está registrado.</p>";
         }
-    
+
         // Cerrar la conexión
         $con->close();
     }
-    
-    
-    
+
+
+
     public function consol_perfil()
     {
         // Verificar si se pasó el ID de usuario en la URL
@@ -327,43 +329,43 @@ class listas extends BaseDatos
             echo "ID de usuario no proporcionado.";
             return;  // Detenemos la ejecución si no hay ID
         }
-    
+
         // Obtener el ID del usuario desde la URL
         $id_usuario = $_GET['id'];  // ID pasado en la URL, por ejemplo: ?id=1
-    
+
         // Conexión a la base de datos
         $con = $this->getBD(); // Asumimos que esta función te devuelve una conexión válida
-    
+
         // Verificar que la conexión se haya realizado correctamente
         if ($con->connect_error) {
             echo "Error de conexión: " . $con->connect_error;
             return;  // Detenemos la ejecución si hay un error en la conexión
         }
-    
+
         // Consulta para obtener los datos del usuario con el ID proporcionado
         $sql = "SELECT * FROM usuario WHERE id_usuario = '" . $con->real_escape_string($id_usuario) . "'";
-    
+
         // Ejecutar la consulta
         $resultado = $con->query($sql);
-    
+
         // Verificar si la consulta tuvo errores
         if ($resultado === false) {
             echo "Error en la consulta: " . $con->error;
             return;  // Detenemos la ejecución si hay un error en la consulta
         }
-    
+
         // Verificar si hay resultados
         if ($resultado->num_rows > 0) {
             // Obtener los datos del usuario
             $usuario = $resultado->fetch_assoc();
-    
+
             // Mostrar los datos del usuario
             echo '
             <div class="profile-container">
                 <div class="profile-header">
-                    ' . ($usuario['foto'] ? 
-                        '<img src="./../img/profile/' . htmlspecialchars($usuario['foto']) . '" alt="Foto de perfil" class="profile-photo">' :
-                        '<i class="fas fa-user-circle"></i>') . '
+                    ' . ($usuario['foto'] ?
+                '<img src="./../img/profile/' . htmlspecialchars($usuario['foto']) . '" alt="Foto de perfil" class="profile-photo">' :
+                '<i class="fas fa-user-circle"></i>') . '
                 </div>
                 <div class="profile-details">
                     <h2>Perfil de Usuario</h2>
@@ -396,14 +398,109 @@ class listas extends BaseDatos
         } else {
             echo "<p>No se encontró el perfil del usuario.</p>";
         }
-    
+
         // Cerrar la conexión
         $con->close();
     }
-    
 
-    
+
+
+
+    public function camiones_conductoresid()
+    {
+        // Consulta con el JOIN para filtrar solo los conductores
+        $sql = "SELECT * FROM `usuario` WHERE `tipo` = 'conductor'";
+
+        // Conexión a la base de datos
+        $con = $this->getBD();
+
+        // Ejecutar la consulta
+        $resultado = $con->query($sql);
+
+        // Verificar si la consulta tuvo errores
+        if ($resultado === false) {
+            echo "Error en la consulta: " . $con->error;
+            return;  // Detenemos la ejecución si hay un error
+        }
+
+        if ($resultado->num_rows > 0) {
+            echo "<label for='id_conductor'>ID del Conductor:</label>
+            <select name='id_conductor' id='id_conductor' required>";
+            while ($renglon = $resultado->fetch_assoc()) {
+                echo "<option value='" . $renglon['id_usuario'] . "'>" . $renglon['nombre'] . " " . $renglon['apellido'] . "</option>";
+            }
+            echo " </select>";
+        } else {
+            echo "No se encontraron conductores.";
+        }
+
+        $con->close();
+    }
+
+
+    public function soporte_usuariosid()
+    {
+        // Consulta con el JOIN para filtrar solo los conductores
+        $sql = "SELECT * FROM `usuario` order by id_usuario";
+
+        // Conexión a la base de datos
+        $con = $this->getBD();
+
+        // Ejecutar la consulta
+        $resultado = $con->query($sql);
+
+        // Verificar si la consulta tuvo errores
+        if ($resultado === false) {
+            echo "Error en la consulta: " . $con->error;
+            return;  // Detenemos la ejecución si hay un error
+        }
+
+        if ($resultado->num_rows > 0) {
+            echo "<label for='id_usuario'>ID del Usuario:</label>
+            <select name='id_usuario' id='id_usuario' required>";
+            while ($renglon = $resultado->fetch_assoc()) {
+                echo "<option value='" . $renglon['id_usuario'] . "'>" . $renglon['nombre'] . " " . $renglon['apellido'] .  " [".$renglon['usuario']."]</option>";
+            }
+            echo " </select>";
+        } else {
+            echo "No se encontraron conductores.";
+        }
+
+        $con->close();
+    }
+
+
+
+
+    public function horarios_routesid()
+    {
+        // Consulta con el JOIN para filtrar solo los conductores
+        $sql = "SELECT * FROM `routes`";
+
+        // Conexión a la base de datos
+        $con = $this->getBD();
+
+        // Ejecutar la consulta
+        $resultado = $con->query($sql);
+
+        // Verificar si la consulta tuvo errores
+        if ($resultado === false) {
+            echo "Error en la consulta: " . $con->error;
+            return;  // Detenemos la ejecución si hay un error
+        }
+
+        if ($resultado->num_rows > 0) {
+
+            echo "<label for='id_route'>ID de la Ruta:</label>
+            <select name='id_route' id='id_route' required>";
+            while ($renglon = $resultado->fetch_assoc()) {
+                echo "<option value='" . $renglon['id'] . "'>" . $renglon['nombre'] . "</option>";
+            }
+            echo " </select>";
+        } else {
+            echo "No se encontraron conductores.";
+        }
+
+        $con->close();
+    }
 }
-
-
-

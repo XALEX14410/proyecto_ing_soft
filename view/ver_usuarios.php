@@ -53,7 +53,7 @@ $lista_ruta = $midato->lista_ruta();
 
     <main class="main width--40" id="formContainer" style="display: none;">
         <h2>Insertar Usuarios</h2>
-        <form action="./../controller/insert/insertar_usuario.php" method="POST">
+        <form method="POST" id="form_usuario">
             <label for="usuario">Usuario:</label>
             <input type="text" name="usuario" id="usuario" required>
 
@@ -63,8 +63,20 @@ $lista_ruta = $midato->lista_ruta();
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" id="nombre" required>
 
-            <label for="telefono">Telefono:</label>
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" id="apellido" required>
+
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" id="edad" required>
+
+            <label for="telefono">Teléfono:</label>
             <input type="text" name="telefono" id="telefono" required>
+
+            <label for="correo">Correo:</label>
+            <input type="email" name="correo" id="correo" required>
+
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" name="contraseña" id="contraseña" required>
 
             <label for="tipo">Tipo:</label>
             <select name="tipo" id="tipo" required>
@@ -73,8 +85,16 @@ $lista_ruta = $midato->lista_ruta();
                 <option value="soporte">Soporte</option>
             </select>
 
+            <label for="foto">Foto:</label>
+            <input type="file" name="foto" id="foto">
+
             <button type="submit">Insertar Usuario</button>
         </form>
+
+
+
+        <div id="response"></div> <!-- Aquí mostrarás la respuesta del servidor -->
+
     </main>
     <main class="main width--90">
         <h2>Usuarios</h2>
@@ -99,7 +119,7 @@ $lista_ruta = $midato->lista_ruta();
         </table>
     </main>
 
-    <?php $micomponente->footer()?>
+    <?php $micomponente->footer() ?>
 
     <!-- Archivos de scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -107,6 +127,10 @@ $lista_ruta = $midato->lista_ruta();
     <script src="./../js/display.js"></script>
     <!-- Ruta local a los iconos de Bootstrap -->
     <link href="ruta/a/bootstrap-icons.css" rel="stylesheet">
+    <script src="./../js/insert/insert_usuarios.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.0.0/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.0.0/aes.js"></script> -->
+
     <script>
         // Inicializar AOS (animaciones)
         AOS.init();

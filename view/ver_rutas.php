@@ -33,6 +33,7 @@ $lista_ruta = $midato->lista_ruta();
 
 <head>
     <title>Panel de Administración</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <!-- Estilos para los iconos -->
@@ -51,30 +52,31 @@ $lista_ruta = $midato->lista_ruta();
     <a href="#" id="insertarBtn"><i class="bi bi-plus-square-fill"></i>Insertar ruta</a>
 
     <main class="main width--40" id="formContainer" style="display: none;">
-        <h2>Insertar ruta</h2>
-        <form action="./../controller/insert/insertar_usuario.php" method="POST">
-            <label for="usuario">Usuario:</label>
-            <input type="text" name="usuario" id="usuario" required>
+    <h2>Insertar Ruta</h2>
+    <form id="form_ruta">
+        <label for="nombre">Nombre de la Ruta:</label>
+        <input type="text" name="nombre" id="nombre" required>
 
-            <label for="ubicacion">Ubicación:</label>
-            <input type="text" name="ubicacion" id="ubicacion" required>
+        <label for="coordenada_inicio">Coordenada de inicio:</label>
+        <input type="text" name="coordenada_inicio" id="coordenada_inicio" placeholder="18.882053, -96.919761" required>
+        
+        <button type="button" id="add-parada-btn">Agregar parada</button>
 
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" required>
+        <div id="paradas-container"></div> <!-- Aquí se agregarán las coordenadas intermedias -->
 
-            <label for="telefono">Telefono:</label>
-            <input type="text" name="telefono" id="telefono" required>
+        <label for="coordenada_final">Coordenada final:</label>
+        <input type="text" name="coordenada_final" id="coordenada_final" placeholder="18.884936, -96.930876" required>
 
-            <label for="tipo">Tipo:</label>
-            <select name="tipo" id="tipo" required>
-                <option value="admin">Admin</option>
-                <option value="conductor">Conductor</option>
-                <option value="soporte">Soporte</option>
-            </select>
+        <input type="hidden" name="coordenadas" id="coordenadas">
 
-            <button type="submit">Insertar</button>
-        </form>
-    </main>
+        <button type="submit">Insertar</button>
+    </form>
+</main>
+
+
+
+
+
     <main class="main width--90">
         <h2>Rutas</h2>
         <table border="1" class="tabla">
@@ -98,6 +100,7 @@ $lista_ruta = $midato->lista_ruta();
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="./../js/display.js"></script>
+    <script src="./../js/insert/insert_ruta.js"></script>
     <script>
         // Inicializar AOS (animaciones)
         AOS.init();

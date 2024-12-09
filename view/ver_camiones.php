@@ -33,6 +33,7 @@ $lista_ruta = $midato->lista_ruta();
 
 <head>
     <title>Panel de Administración</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <!-- Estilos para los iconos -->
@@ -50,32 +51,29 @@ $lista_ruta = $midato->lista_ruta();
     <a href="#" id="insertarBtn"><i class="bi bi-plus-square-fill"></i>Insertar Camiones</a>
 
     <main class="main width--40" id="formContainer" style="display: none;">
-        <h2>Insertar Usuarios</h2>
-        <form action="./../controller/insert/insertar_usuario.php" method="POST">
-            <label for="usuario">Usuario:</label>
-            <input type="text" name="usuario" id="usuario" required>
+        <h2>Insertar Camiones</h2>
+        <form method="POST" id="form_camion">
+            <label for="numero">Número del Camión:</label>
+            <input type="text" name="numero" id="numero" required>
 
-            <label for="ubicacion">Ubicación:</label>
-            <input type="text" name="ubicacion" id="ubicacion" required>
+            <?php $lista->camiones_conductoresid() ?>
+            
+            <label for="agencia">Agencia:</label>
+            <input type="text" name="agencia" id="agencia" required>
 
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" required>
+            <label for="estado">Estado:</label>
+            <select name="estado" id="estado" required>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
 
-            <label for="telefono">Telefono:</label>
-            <input type="text" name="telefono" id="telefono" required>
-
-            <label for="tipo">Tipo:</label>
-            <select name="tipo" id="tipo" required>
-                <option value="admin">Admin</option>
-                <option value="conductor">Conductor</option>
-                <option value="soporte">Soporte</option>
             </select>
 
-            <button type="submit">Insertar Usuario</button>
+            <button type="submit">Insertar Camión</button>
         </form>
+
     </main>
     <main class="main width--90">
-        <h2>Usuarios</h2>
+        <h2>Camiones</h2>
         <table border="1" class="tabla">
             <thead>
                 <tr>
@@ -93,12 +91,13 @@ $lista_ruta = $midato->lista_ruta();
         </table>
     </main>
 
-    <?php $micomponente->footer()?>
+    <?php $micomponente->footer() ?>
 
     <!-- Archivos de scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="./../js/display.js"></script>
+    <script src="./../js/insert/insert_camiones.js"></script>
     <script>
         // Inicializar AOS (animaciones)
         AOS.init();
