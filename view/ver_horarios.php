@@ -3,7 +3,7 @@
 session_start();
 
 // Verificar si el usuario ha iniciado sesión y si es un administrador
-if (isset($_SESSION['usuario']) && $_SESSION['usuario'] === 'admin') {
+if (isset($_SESSION['usuario']) ) {
     // Mostrar contenido de administración aquí
     echo 'Bienvenido, administrador.';
 } else {
