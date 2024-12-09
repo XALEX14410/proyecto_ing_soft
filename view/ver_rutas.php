@@ -1,22 +1,17 @@
 <?php
-// login.php
+// Iniciar sesión para usar la variable $_SESSION
 session_start();
 
-// Aquí deberías validar las credenciales del usuario
-// Esto es solo un ejemplo de validación básica
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Validar credenciales (esto debería ser reemplazado con lógica real de autenticación)
-    if ($username === 'admin' && $password === 'password') {
-        $_SESSION['loggedin'] = true;
-        header('Location: admin.php');
-        exit();
-    } else {
-        echo '<script>alert("Nombre de usuario o contraseña incorrectos.");</script>';
-    }
+// Verificar si el usuario ha iniciado sesión y si es un administrador
+if (isset($_SESSION['usuario']) && $_SESSION['usuario'] === 'admin') {
+    // Mostrar contenido de administración aquí
+    echo 'Bienvenido, administrador.';
+} else {
+    // Si no está logueado o no es administrador, redirigir al inicio
+    header('Location: /proyecto/proyecto_ing_soft/');
+    exit();
 }
+
 
 include_once(dirname(__FILE__) . "/../model/bd_rutas.php");
 include_once(dirname(__FILE__) . "/../model/listas.php");

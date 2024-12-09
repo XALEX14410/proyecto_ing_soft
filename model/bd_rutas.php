@@ -76,7 +76,7 @@ class bd_ruta extends BaseDatos {
     }
 
     // Elimino una ruta
-    public function elimina_dbo_dbo_usuarios($id) {
+    public function elimina_rutas($id) {
         $sql = "DELETE FROM `routes` WHERE id = ".$id;
         $con = $this->getBD();
         $resultado = $con->query($sql);

@@ -19,8 +19,8 @@ class listas extends BaseDatos
                 echo "<td>" . $renglon['nombre'] . "</td>";
                 echo "<td>" . $renglon['coordinates'] . "</td>";
                 echo "<td>
-                <a href='editar.php?id=" . $renglon['id'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a> 
-                <a href='eliminar.php?id=" . $renglon['id'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i> </a>
+                <a href='./../controller/update/editar_rutas.php?id=" . $renglon['id'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a> 
+                <a href='./../controller/delete/eliminar_ruta.php?id=" . $renglon['id'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i> </a>
               </td>";
 
                 echo "</tr>";
@@ -66,8 +66,8 @@ class listas extends BaseDatos
                 echo "<td>" . $renglon['tipo'] . "</td>";
                 echo "<td class='actions'>
                 <a href='consol.php?id=" . $renglon['id_usuario'] . "' class='btn-eye'><i class='bi bi-eye'></i></a> 
-                <a href='editar.php?id=" . $renglon['id_usuario'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a> 
-                <a href='eliminar.php?id=" . $renglon['id_usuario'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i></a>
+                <a href='./../controller/update/editar_usuario.php?id=" . $renglon['id_usuario'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a> 
+                <a href='./../controller/delete/eliminar_usuarios.php?id=" . $renglon['id_usuario'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i></a>
               </td>";
                 echo "</tr>";
             }
@@ -144,8 +144,8 @@ class listas extends BaseDatos
                 echo "<td>" . $renglon['nombre_usuario'] . "</td>"; // Ahora muestra el nombre del usuario
 
                 echo "<td>
-                        <a href='editar.php?id=" . $renglon['id_soporte'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a>  
-                        <a href='eliminar.php?id=" . $renglon['id_soporte'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i></a>
+                        <a href='./../controller/update/editar_soporte.php?id=" . $renglon['id_soporte'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a>  
+                        <a href='./../controller/delete/eliminar_soporte.php?id=" . $renglon['id_soporte'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i></a>
                       </td>";
                 echo "</tr>";
             }
@@ -178,8 +178,8 @@ class listas extends BaseDatos
                 echo "<td>" . $renglon['nombre_ruta'] . "</td>"; // Ahora muestra el nombre de la ruta
                 echo "<td>" . $renglon['hora'] . "</td>";
                 echo "<td>
-                        <a href='editar.php?id=" . $renglon['id_horario'] . "'class='btn-edit'><i class='bi bi-pencil-fill'></i></a>  
-                        <a href='eliminar.php?id=" . $renglon['id_horario'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")'class='btn-delete'><i class='bi bi-trash-fill'></i></a>
+                        <a href='./../controller/update/editar_horario.php?id=" . $renglon['id_horario'] . "'class='btn-edit'><i class='bi bi-pencil-fill'></i></a>  
+                        <a href='./../controller/delete/eliminar_horario.php?id=" . $renglon['id_horario'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")'class='btn-delete'><i class='bi bi-trash-fill'></i></a>
                       </td>";
                 echo "</tr>";
             }
@@ -221,8 +221,8 @@ class listas extends BaseDatos
                 echo "<td>" . $renglon['agencia'] . "</td>";
                 echo "<td>" . $renglon['estado'] . "</td>";
                 echo "<td>
-                        <a href='editar.php?id=" . $renglon['id_camion'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a>  
-                        <a href='eliminar.php?id=" . $renglon['id_camion'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i></a>
+                        <a href='./../controller/update/editar_camiones.php?id=" . $renglon['id_camion'] . "' class='btn-edit'><i class='bi bi-pencil-fill'></i></a>  
+                        <a href='./../controller/delete/eliminar_camiones.php?id=" . $renglon['id_camion'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")' class='btn-delete'><i class='bi bi-trash-fill'></i></a>
                       </td>";
                 echo "</tr>";
             }
