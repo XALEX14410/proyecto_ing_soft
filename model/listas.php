@@ -494,7 +494,7 @@ class listas extends BaseDatos
             echo "<label for='id_route'>ID de la Ruta:</label>
             <select name='id_route' id='id_route' required>";
             while ($renglon = $resultado->fetch_assoc()) {
-                echo "<option value='" . $renglon['id'] . "'>" . $renglon['nombre'] . "</option>";
+                echo "<option value='" . $renglon['id'] ."'>" . $renglon['nombre'] . "</option>";
             }
             echo " </select>";
         } else {

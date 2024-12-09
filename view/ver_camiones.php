@@ -5,7 +5,7 @@ session_start();
 // Verificar si el usuario ha iniciado sesión y si es un administrador
 if (isset($_SESSION['usuario']) ) {
     // Mostrar contenido de administración aquí
-    echo 'Bienvenido, administrador.';
+    // echo 'Bienvenido, administrador.';
 } else {
     // Si no está logueado o no es administrador, redirigir al inicio
     header('Location: /proyecto/proyecto_ing_soft/');
